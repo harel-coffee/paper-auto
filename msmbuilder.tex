@@ -1,0 +1,143 @@
+% vim: textwidth=75 rnu ts=2 sw=2 et
+
+% superscriptaddress - don't group by affiliation
+% nofootinbib - footnote doesn't go in bibliography
+% endfloats - put floats together at the end
+% endfloats* - every float will be on its own page
+\documentclass[superscriptaddress,nofootinbib,twocolumn]{revtex4-1}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{hyperref}              % revtex will link biblio
+\usepackage{cleveref}  % Better figures/equations references
+                                   % hyperref must come before cleveref
+
+\usepackage{color}      			     % Colored text
+\usepackage{soul}                  % Hyphenation, strikethrough
+\usepackage{graphicx}              % Figures
+\usepackage{siunitx}				       % SI Units
+
+\hyphenation{MSMBuilder}
+
+\begin{document}
+\title{MSMBuilder: Statistical Models for Biomolecular Dynamics}
+\date{\today}
+
+\author{Matthew P. Harrigan}
+\affiliation{Department of Chemistry, Stanford University, Stanford, CA 94305}
+
+\author{Mohammad M. Sultan}
+\affiliation{Department of Chemistry, Stanford University, Stanford, CA 94305}
+
+\author{Carlos X. Hern\'andez}
+\affiliation{Program in Biophysics, Stanford University, Stanford, CA 94305}
+
+\author{Brooke E. Husic}
+\affiliation{Department of Chemistry, Stanford University, Stanford, CA 94305}
+
+\author{Peter Eastman}
+\affiliation{Department of Chemistry, Stanford University, Stanford, CA 94305}
+
+\author{Christian R. Schwantes}
+\affiliation{Department of Chemistry, Stanford University, Stanford, CA 94305}
+
+\author{Kyle A. Beauchamp}
+\altaffiliation[Current address: ]{Counsyl, 180 Kimball Way, South San Francisco, CA 94080}
+\affiliation{Memorial Sloan Kettering Cancer Center, New York, NY 10065}
+
+\author{Robert T. McGibbon}
+\email[Co-corresponding author: ]{Robert.McGibbon@DEShawResearch.com}
+\altaffiliation[Current address: ]{D. E. Shaw Research, 120 W. 45th St., 34th Fl. New York, NY 10036}
+\affiliation{Department of Chemistry, Stanford University, Stanford, CA 94305}
+
+\author{Vijay S. Pande}
+\email[Co-corresponding author: ]{pande@stanford.edu}
+\affiliation{Department of Chemistry, Stanford University, Stanford, CA 94305}
+\affiliation{Department of Computer Science, Stanford University, Stanford, CA 94305}
+\affiliation{Department of Structural Biology, Stanford University, Stanford, CA 94305}
+\affiliation{Program in Biophysics, Stanford University, Stanford, CA 94305}
+
+
+\begin{abstract}
+
+MSMBuilder is a software package for building statistical models of
+high-dimensional time-series data. It is designed with a particular focus
+on the analysis of atomistic simulations of biomolecular dynamics such as
+protein folding and conformational change.  MSMBuilder is named for its
+ability to construct Markov State Models (MSMs), a class of models that has
+gained favor among computational biophysicists.  In addition to traditional
+and cutting-edge flavors of MSMs, the package includes complementary
+algorithms for understanding time-series data such as hidden Markov models
+(HMMs) and time-structure based independent component analysis (tICA).
+MSMBuilder boasts an easy to use command-line interface, as well as clear
+and consistent abstractions through its Python API (application programming
+interface).  MSMBuilder is developed with careful consideration for
+compatibility with the broader machine-learning community by following the
+design of \texttt{scikit-learn}.  The package is used primarily by
+practitioners of molecular dynamics but is just as applicable to other
+computational or experimental time-series measurements.
+\url{http://msmbuilder.org}
+
+\end{abstract}
+
+\maketitle
+
+
+\section{Introduction}
+\label{sec:intro}
+\input{0-intro/intro.tex}
+
+\section{Instructive Examples}
+\subsection{Constructing an MSM}
+\label{sec:example-src}
+\input{1-src/src.tex}
+
+\subsection{Selecting Hyperparameters}
+\label{sec:example-gmrq}
+\input{2-gmrq/gmrq.tex}
+
+\section{Conclusions}
+\label{sec:conclusion}
+\input{3-conclusion/conclusion.tex}
+
+\section{Availibility}
+
+MSMBuilder documentation and installation is available at
+\url{http://msmbuilder.org}. The source code is available under the
+open-source LGPL2.1 license and is accessible at
+\url{http://github.com/msmbuilder/msmbuilder}.
+The current release at time of writing is version 3.5 \cite{2016-msmbuilder3.5-zenodo}. 
+Complete examples can be
+found as IPython notebooks in the supporting information and at
+\url{http://github.com/msmbuilder/paper}.
+
+\section{Author Contributions}
+
+MPH, MMS, CXH, and BEH wrote the paper.
+MPH, MMS, CXH, BEH, PE, CRS, KAB, RTM, and VSP edited the paper.
+MPH, MMS, CXH, BEH, PE, CRS, KAB, and RTM wrote the software.
+VSP supervised the project.
+
+\section{Acknowledgments}
+
+We extend thanks to all our contributors including
+Stephen Liu, Patrick Riley, Steven Kearnes, Joshua Adelman, and Gert Kiss.
+We acknowledge funding from NIH grants U19 AI109662 and 2R01GM062868.
+MMS acknowledges support from NSF-MCB-0954714.
+CXH acknowledges support from NSF GRFP (DGE-114747).
+KAB acknowledges support from NIH grant P30CA008747, the Sloan Kettering
+Institute, and Starr Foundation grant I8-A8-058.
+We acknowledge members of the Chodera, Pande, and No\"{e} labs for helpful
+discussions. We thank Ariana Peck for invaluable feedback on this manuscript.
+
+\section{Disclosure}
+KAB is currently an employee of Counsyl, Inc.
+RTM is currently an employee of D.E. Shaw Research, LLC.
+VSP is a consultant of Schrodinger, LLC and a member of its scientific
+  advisory board.
+
+\bibliography{msmbuilder.bib,msm.bib,tools.bib}
+
+
+\end{document}

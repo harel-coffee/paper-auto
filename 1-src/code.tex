@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}  % better looking single quotes
+\usepackage{upquote}      % better looking single quotes
+
+% Force a small width (adjust as necessary)
+\usepackage[letterpaper, total={3.5in, 8in}]{geometry}
+
+% http://tex.stackexchange.com/questions/46880
+\AtBeginDocument{%
+\def\PYZsq{\textquotesingle}%
+}
+
+\begin{document}
+\renewcommand{\theFancyVerbLine}{
+  \sffamily\textcolor[rgb]{0.5,0.5,0.5}{\scriptsize\arabic{FancyVerbLine}}}
+
+\pagenumbering{gobble} % turn of page numbers for pdfcrop
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{python}
+    feat = AlphaAngleFeaturizer(sincos=True)
+    ds = dataset('trajectories/*.lh5')
+    alphas = feat.fit_transform(ds)
+
+    tica = tICA(lag_time=500, n_components=10)
+    ticas = tica.fit_transform(alphas)
+
+    kmeans = MiniBatchKMeans(n_clusters=200)
+    assignments = kmeans.fit_transform(ticas)
+
+    msm = ContinuousTimeMSM(lag_time=400,
+                            ergodic_cutoff='on')
+    msm.fit(assignments)
+    dump(msm, 'msm.pickl')
+\end{minted}
+\end{document}

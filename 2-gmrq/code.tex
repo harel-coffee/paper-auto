@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}  % better looking single quotes
+\usepackage{upquote}      % better looking single quotes
+
+% Force a small width (adjust as necessary)
+\usepackage[letterpaper, total={4in, 8in}]{geometry}
+
+
+
+% http://tex.stackexchange.com/questions/46880
+\AtBeginDocument{%
+\def\PYZsq{\textquotesingle}%
+}
+
+\begin{document}
+\renewcommand{\theFancyVerbLine}{
+  \sffamily\textcolor[rgb]{0.5,0.5,0.5}{\scriptsize\arabic{FancyVerbLine}}}
+
+\pagenumbering{gobble} % turn of page numbers for pdfcrop
+
+\begin{figure}
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{python}
+  features = FeatureSelector([
+      ('diheds', DihedralFeaturizer(types=['phi', 'psi']),
+      ('contacts', ContactFeaturizer(scheme='ca'))])
+  pipeline = Pipeline([
+      ('featurizer', features),
+      ('tica', tICA(n_components=2)),
+      ('cluster', MiniBatchKMeans(n_clusters=250)),
+      ('msm', MarkovStateModel(n_timescales=3))])
+   ss = ShuffleSplit(28, n_iter=50, test_size=0.5)
+   cv = GridSearchCV(pipeline, cv=ss, param_grid={
+      'featurizer__which_feat': ['contacts', 'diheds'],
+      'tica__lag_time': [1, 4, 16, 64]})
+   cv.fit(trajs)
+\end{minted}
+\end{figure}
+\end{document}

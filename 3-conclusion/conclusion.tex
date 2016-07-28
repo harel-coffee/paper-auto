@@ -1,0 +1,29 @@
+MSMBuilder~3 is a powerful and easy-to-use software package for drawing
+interpretable conclusions from time-series data. We used two examples to
+demonstrate how MSMBuilder can make sense of a molecular dynamics dataset
+consisting of thousands of trajectories in a highly automated and
+statistically robust way. In the first example, we construct a ``vanilla''
+MSM and show how MSMBuilder enables the construction of
+easily-interpretable models that expose the connection between biological function
+and structural dynamics.  We highlight the breadth of relevant algorithmic choices for
+featurization, normalization, dimensionality reduction, clustering, and MSM
+modelling.  In the second instructive example, we acknowledge that the
+explosion of choices in parameters and protocol can be overwhelming. We use
+the GMRQ score and off-the-shelf cross-validation machinery to do a simple
+grid search over tunable parameters to evaluate the relative merit of many
+MSMs built on the same MD dataset of a small protein. Since
+cross-validation is not a technique unique to biophysics, we leverage the
+greater Python machine learning ecosystem for this example.
+
+More broadly, MSMBuilder's power and clarity is derived from its integration
+with the machine learning community at large. Our power to focus on
+developing methods bespoke to biophysics and time-series analysis comes
+from exploiting general-purpose algorithms implemented by respective
+experts. The clarity of MSMBuilder's API is due in large part to the
+massive amount of effort and skill put into the design of
+\texttt{scikit-learn}'s API. As distributed computing and Markov modelling
+continue to become more prominent, MSMBuilder offers a sustainable,
+extensible, powerful, and easy-to-use set of Python and command-line tools
+to help researchers draw meaningful conclusions from their data.
+
+% vim: ts=2 sw=2 et tw=75

@@ -1,0 +1,17 @@
+acs-*.bib
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.fgx
+*.tbx
+*.vdx
+.DS_Store
+*.swp
+.idea/
+
+# build artifacts
+msmbuilderNotes.bib
+msmbuilder.out

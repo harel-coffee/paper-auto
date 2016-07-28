@@ -1,0 +1,48 @@
+Molecular dynamics (MD) is a powerful probe into atomistic dynamics. Recent
+advances in technology (specialized hardware \cite{2008-anton} or commodity
+GPUs \cite{2009-friedrichs-gpu}) and strategies (massively distributed
+architectures \cite{2000-fah, 2010-gpugrid, 2014-kohlhoff-exacycle}) enable
+simulations to reach larger size and longer timescales. Increasing
+quantities of raw data require novel and sophisticated analysis techniques
+\cite{2014-msm-perspective}. Markov state models (MSMs) have gained favor
+for drawing interpretable conclusions from time-series data
+\cite{2010-everything-msm-afraid-ask, 2014-msm-perspective,
+2014-chodera-msm, 2014-msm-book}. Briefly, MSMs model dynamic systems using
+a set of discrete states and pairwise transition rates. From these models,
+the researcher can compute observables of interest and make predictions.
+These models boast a basis in physics, statistical rigor, and ease of
+interpretation. Furthermore, MSMs are able to stich together many
+independent simulation runs, allowing researchers to fully exploit
+distributed computing.
+
+The idea of describing a system by its states and rates is natural for
+chemists and biologists, but the estimation of states and rates from finite
+data (perhaps molecular dynamics) is not obvious. From the introduction of
+MSMs to the biophysics community, algorithmic improvements for constructing
+MSMs and computing observables have been the focus of intense study. The
+practical implementation of these algorithms has spawned several historical
+packages for MSM construction \cite{2009-msmbuilder1, 2011-msmbuilder2,
+2012-jemma}. Each of these packages was tied strongly to the best
+practices in MSM construction of the time. Due to the fast-moving research
+around MSMs, software re-writes were common \cite{2015-pyemma, 2016-htmd}.
+
+We introduce MSMBuilder~3, a community-driven, open source software package
+for constructing MSMs. MSMBuilder offers a curated selection of MSM
+construction algorithms based on modern advances in the field. MSMBuilder
+is implemented in the Python programming language with performance-critical
+components written in C. It exposes an extensible API modeled after that of
+\texttt{scikit-learn}. The modular design ensures MSMBuilder~3 is adaptable
+to future improvements in MSM construction. The package can be invoked
+directly from Python or via the command line.
+
+Through two instructive examples, we showcase the capabilities and benefits
+of MSMBuilder. In the first, we use MSMBuilder to analyze a biological
+system of interest from a dataset composed of more than 20,000
+trajectories. This example builds a single MSM using new or refined methods
+unavailable in previous versions of the software. The rapid advances in
+MSM methods can lead to a ``paradox of choice" for the researcher. In the
+second example, we resolve this paradox using MSMBuilder's implementation of novel scoring
+functionals for selecting the best models and algorithms in a systematic
+way.
+
+% vim: tw=75
