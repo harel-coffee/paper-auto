@@ -1,3 +1,4 @@
+# latex
 acs-*.bib
 *.aux
 *.bbl
@@ -8,7 +9,9 @@ acs-*.bib
 *.fgx
 *.tbx
 *.vdx
+*.out
 .DS_Store
+# vim
 *.swp
 .idea/
 

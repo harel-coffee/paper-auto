@@ -76,9 +76,9 @@ search space.  A simple grid search as performed in this example can become
 intractible as the number of hyperparameters (i.e.~the dimension of the
 search space) increases. We direct interested users to Osprey
 \cite{2016-osprey}, a tool for hyperparameter optimization with a variety
-of search strategies and well-engineered parallelism. Osprey is optimized
-for interoperability with MSMBuilder and compatible with any \texttt{scikit-learn}
-estimator.
+of search strategies and support for parallel computation.
+Osprey interoperates with any \texttt{scikit-learn} estimator
+including those in MSMBuilder.
 
 This example leverages the \texttt{Pipeline}, \texttt{ShuffleSplit}, and
 \texttt{GridSearchCV} machinery from \texttt{scikit-learn}. Additionally,
@@ -87,8 +87,10 @@ algorithms such as clustering or PCA. We note that such general algorithms
 do not need to be reinvented and re-programmed by the biophysics community.
 By delegating some development effort to this widely-used machine learning
 library, we ensure that the development of MSMBuilder is focused on
-biophysical algorithms and considerations. This advantage offers rapid
-adoption of state-of-the-art algorithms and a larger community for code
-maintenance and longevity.
+biophysical algorithms and considerations.
+This advantage offers rapid adoption of the latest algorithms which have
+demonstrated improved ability to build MSMs (e.g. \cite{2015-gmrq}) and a
+larger community for code maintenance and longevity.
+
 
 % vim: tw=75

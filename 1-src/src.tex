@@ -84,8 +84,8 @@ https://goo.gl/LLchMT.  For simulation details, see
 \citet{Shukla_NatCommun14}.}. 
 
 The first step of model construction is to transform the raw Cartesian
-coordinates into vector features that respect the physics of the system,
-namely translational and rotational invariance (\cref{fig:dimreduce}, step
+coordinates into vector features that are invariant to
+translation and rotation (\cref{fig:dimreduce}, step
 1).  Here, we project our trajectory frames onto the dihedral angles
 created by each set of four consecutive alpha carbons ($\alpha$ angles)
 \cite{Flocco_ProteinSci95}.  This reduces the dimensionality of the data
@@ -105,17 +105,19 @@ feature scaling.
 % so I don't think it's too unique a term.
 
 The second step in MSM construction projects structural features onto
-kinetically-motivated coordinates (\cref{fig:dimreduce}, step 2).  Through
-our ``state" definition, we assert that conformations within a state
-interconvert rapidly. By moving from a structural representation of our
-data to a kinetic one, we can capture the essential dynamics with fewer
-dimensions (typically of order 10).  To achieve this, we use
-time-structure based independent
-component analysis (tICA) to learn a small number of kinetic coordinates
-onto which we projected our features from the previous step
-\cite{2013-schwantes-tica, 2013-noe-tica}. This reduced the dimensionality
-of our kinase data from 518 dihedrals to 5 kinetic coordinates.  MSMBuilder
-includes support for more advanced kinetic coordinate determination
+a lower-dimensional subspace
+(\cref{fig:dimreduce}, step 2). This improves the statistical qualities
+of subsequent steps, but may discard important information if the
+projection is not carefully chosen.
+Time-structure based independent
+component analysis (tICA) finds a set of ``slow" (high autocorrelation)
+coordinates. In practice, this dimensionality reduction
+has proven to be very useful for capturing
+slow, biophysical conformational change 
+\cite{2013-schwantes-tica, 2013-noe-tica}.
+In this example, we reduce the dimensionality
+of our kinase data from 518 dihedrals to 5 tICA coordinates.
+MSMBuilder includes support for similar algorithms
 (\texttt{SparseTICA} \cite{2016-sparsetica}) as well as general manifold
 learning algorithms like principal components analysis (\texttt{PCA}),
 \texttt{SparsePCA}, or \texttt{MiniBatchSparsePCA}. Prior to 2013, this
@@ -128,10 +130,10 @@ Next, we define the states of our MSM by grouping conformations which
 interconvert rapidly (\cref{fig:dimreduce}, step 3). For the c-Src kinase,
 we employ the \texttt{MiniBatchKMeans} \cite{2010-minibatch-kmeans}
 clustering algorithm to parition our data into 200 microstates. We note
-that our data has been reduced from 5 kinetic
+that our data has been reduced from 5 tICA
 coordinates to one integer cluster label per frame. 
-The prior transformation into kinetic
-coordinates permits using off-the-shelf clustering algorithms. Accordingly,
+The prior dimensionality reduction
+permits using off-the-shelf clustering algorithms. Accordingly,
 MSMBuilder supports K-Means like clustering algorithms (\texttt{KCenters},
 \texttt{KMedoids}, and  \texttt{MiniBatchKMedoids}), and hierarchical clustering.
 

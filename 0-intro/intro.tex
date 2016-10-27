@@ -10,8 +10,8 @@ for drawing interpretable conclusions from time-series data
 2014-chodera-msm, 2014-msm-book}. Briefly, MSMs model dynamic systems using
 a set of discrete states and pairwise transition rates. From these models,
 the researcher can compute observables of interest and make predictions.
-These models boast a basis in physics, statistical rigor, and ease of
-interpretation. Furthermore, MSMs are able to stich together many
+These models are statistically rigorous and easy to
+interpret. Furthermore, MSMs are able to stitch together many
 independent simulation runs, allowing researchers to fully exploit
 distributed computing.
 
@@ -35,14 +35,15 @@ components written in C. It exposes an extensible API modeled after that of
 to future improvements in MSM construction. The package can be invoked
 directly from Python or via the command line.
 
-Through two instructive examples, we showcase the capabilities and benefits
+Through two instructive examples, we showcase the capabilities
 of MSMBuilder. In the first, we use MSMBuilder to analyze a biological
 system of interest from a dataset composed of more than 20,000
-trajectories. This example builds a single MSM using new or refined methods
-unavailable in previous versions of the software. The rapid advances in
-MSM methods can lead to a ``paradox of choice" for the researcher. In the
-second example, we resolve this paradox using MSMBuilder's implementation of novel scoring
-functionals for selecting the best models and algorithms in a systematic
-way.
+trajectories. This example builds a single MSM using methods
+unavailable in previous tools.
+Due to rapid advances in MSM methods,
+a variety of modeling choices are now available to researchers. 
+In the second example, we demonstrate how MSMBuilder's
+implementation of scoring functionals
+can be used to choose among these methods.
 
 % vim: tw=75
